@@ -1,10 +1,13 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
 
 class DeepSeekRequest:
     def __init__(self):
-        self.API_KEY = "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"  # внутри скобок свой апи ключ отсюда https://openrouter.ai/settings/keys
+        load_dotenv()
+        self.API_KEY = os.getenv("API_KEY")
         self.MODEL = "deepseek/deepseek-r1:free"
 
     def process_content(self, content):
