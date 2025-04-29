@@ -7,9 +7,10 @@ from PyQt5.QtCore import Qt
 
 
 class TestPage(QWidget):
-    def __init__(self):
+    def __init__(self, parent: str):
         super().__init__()
         self.init_ui()
+        self.parent = parent
 
     def init_ui(self):
         layout = QVBoxLayout()

@@ -7,9 +7,11 @@ import markdown
 
 
 class TheoryPage(QWidget):
-    def __init__(self):
+    def __init__(self, parent: str):
         super().__init__()
         self.init_ui()
+        self.parent = parent
+        self.connect_signals()
 
     def init_ui(self):
         layout = QVBoxLayout()
@@ -61,10 +63,27 @@ class TheoryPage(QWidget):
 
         self.setLayout(layout)
 
+    def connect_signals(self):
+        self.back_button.clicked.connect(self.back_to_parent_page)
+        self.test_button.clicked.connect(self.go_to_test_page)
+
+    def go_to_test_page(self):
+        from test_sheet.test_sheet import TestPage
+        self.test_page = TestPage(self.parent)
+        self.hide()
+        self.test_page.showMaximized()
+
+    def back_to_parent_page(self):
+        from grammatic.grammatic_main_sheet import GrammarPage
+        if self.parent == 'Article':
+            self.grammarpage = GrammarPage()
+            self.hide()
+            self.grammarpage.showMaximized()
+
     def showMaximized(self):
         super().showMaximized()
         from deepseek_requests.deepseek_requests import DeepSeekRequest
-        a = DeepSeekRequest()
-        response = a.deep_seek_request(
+        deepseekrequest_response = DeepSeekRequest()
+        response = deepseekrequest_response.deep_seek_request(
             'Напиши мне теорию по артиклям в английском языке, без воды, достаточное количетсво примеров и на русском языке')
         self.theory_text.setText(markdown.markdown(response))

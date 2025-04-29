@@ -153,6 +153,6 @@ class GrammarPage(QWidget):
         self.articles_button.clicked.connect(self.theory_page_activate)
 
     def theory_page_activate(self):
-        self.theory_page = TheoryPage()
+        self.theory_page = TheoryPage('Article')
         self.hide()
         self.theory_page.showMaximized()
