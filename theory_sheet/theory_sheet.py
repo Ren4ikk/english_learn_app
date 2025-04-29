@@ -84,6 +84,7 @@ class TheoryPage(QWidget):
         super().showMaximized()
         from deepseek_requests.deepseek_requests import DeepSeekRequest
         deepseekrequest_response = DeepSeekRequest()
-        response = deepseekrequest_response.deep_seek_request(
-            'Напиши мне теорию по артиклям в английском языке, без воды, достаточное количетсво примеров и на русском языке')
+        with open("prompts/article_theory.txt", "r", encoding="utf-8") as f:
+            prompt_text = f.read()
+        response = deepseekrequest_response.deep_seek_request(prompt_text)
         self.theory_text.setText(markdown.markdown(response))

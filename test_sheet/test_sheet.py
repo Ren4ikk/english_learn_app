@@ -19,6 +19,7 @@ class TestInstance:
     def print_all(self):
         print(self.question, self.first_a, self.second_a, self.three_a, self.four_a, self.right_a)
 
+
 class TestPage(QWidget):
     def __init__(self, parent: str):
         super().__init__()
