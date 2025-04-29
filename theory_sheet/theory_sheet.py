@@ -3,7 +3,10 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
+<<<<<<< HEAD
 import markdown
+=======
+>>>>>>> f2811227294d894fea2179fb1e3254a96035e244
 
 
 class TheoryPage(QWidget):
@@ -66,5 +69,11 @@ class TheoryPage(QWidget):
         from deepseek_requests.deepseek_requests import DeepSeekRequest
         a = DeepSeekRequest()
         response = a.deep_seek_request(
+<<<<<<< HEAD
             'Напиши мне теорию по артиклям в английском языке, без воды, достаточное количетсво примеров и на русском языке')
         self.theory_text.setText(markdown.markdown(response))
+=======
+            'Напиши мне теорию по артиклям в английском языке (без использования markup разметки в тексте (просто текст без всяких звездочек и подобных элементов разметки), без воды, достаточное количетсво примеров)')
+        # print(response)
+        self.theory_text.setText(response)
+>>>>>>> f2811227294d894fea2179fb1e3254a96035e244

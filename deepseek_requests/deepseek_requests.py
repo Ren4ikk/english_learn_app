@@ -7,7 +7,11 @@ import os
 class DeepSeekRequest:
     def __init__(self):
         load_dotenv()
+<<<<<<< HEAD
         self.API_KEY = str(os.getenv("API_KEY"))
+=======
+        self.API_KEY = os.getenv("API_KEY")
+>>>>>>> f2811227294d894fea2179fb1e3254a96035e244
         self.MODEL = "deepseek/deepseek-r1:free"
 
     def process_content(self, content):
@@ -52,7 +56,11 @@ class DeepSeekRequest:
                         pass
 
             print()  # Перенос строки после завершения потока
+<<<<<<< HEAD
             return ''.join(full_response)
+=======
+            return ''.join(full_response).replace('*', '').replace('---', '').replace('###', '')
+>>>>>>> f2811227294d894fea2179fb1e3254a96035e244
 
     def deep_seek_request(self, user_input):
         return self.chat_stream(user_input)
